@@ -7,11 +7,11 @@ function controllerCreerWallet()
 
 
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == true);
-  
+
     ;
     do {
 
-    $Nom = readline("Veuillez saisir  Nom  :");
+        $Nom = readline("Veuillez saisir  Nom  :");
 
     } while (verfiefieNom($Nom) == false);
     do {
@@ -22,7 +22,7 @@ function controllerCreerWallet()
     } while (!verfiefieSolde($Solde));
 
     creerWallet($Numero, $Nom, $CodeSecret, $Solde);
-   
+
 
     echo "creation effectué\n";
 }
@@ -43,7 +43,8 @@ function controllerDepot()
     creerDepot($montant, $Numero);
     var_dump($wallets);
     echo "Depot effectué\n";
-};
+}
+;
 function controllerRetrait()
 {
     global $wallets;
@@ -55,6 +56,10 @@ function controllerRetrait()
     do {
         $montant = readline("veuillez saisir le montant");
     } while (!verfiefieMontant($montant));
+
+
+    creerRetrait($montant, $Numero);
+    var_dump($wallets);
     echo "Retrait effectué";
 }
 ;
