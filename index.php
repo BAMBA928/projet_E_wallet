@@ -1,8 +1,8 @@
 <?php
-include 'controller.php';
-include 'services.php';
 include 'repository.php';
 include 'validator.php';
+include 'services.php';
+include 'controller.php';
 function afficherMenu(): void
 {
     echo "**Menu Distributeur**\n";

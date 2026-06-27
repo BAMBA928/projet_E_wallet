@@ -52,6 +52,7 @@ function creerRetrait($montant, $Numero)
     $transaction = [
         'type' => 'RETRAIT',
         'montant' => $montant,
+        'frais' => $frais,
         'numero' => $Numero,
     ];
 
@@ -72,6 +73,10 @@ function calculFrais($montant)
         return $frais;
     }
 
+}
 
+function listerTransactions()
+{
+    return recupererTransactions();
 }
 ?>

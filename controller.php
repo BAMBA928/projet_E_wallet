@@ -37,11 +37,10 @@ function controllerDepot()
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = (int)readline("veuillez saisir le montant : ");
+        $montant = (int) readline("veuillez saisir le montant : ");
     } while (!verfiefieMontant($montant));
 
     creerDepot($montant, $Numero);
-    var_dump($wallets);
     echo "Depot effectué\n";
 }
 ;
@@ -54,24 +53,33 @@ function controllerRetrait()
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = (int)readline("veuillez saisir le montant");
+        $montant = (int) readline("veuillez saisir le montant");
     } while (!verfiefieMontant($montant));
 
 
     creerRetrait($montant, $Numero);
-    var_dump($wallets);
     echo "Retrait effectué";
 }
 ;
 function controllerListerTransactions()
 {
-    global $wallets;
-    do {
-        $Numero = readline("Veuillez saisir un telephone :");
+    global $vide;
+    $transactions = listerTransactions();
 
-    } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
+    if ($vide) {
+        echo "Aucune transaction\n";
+        return;
+    }
+    foreach ($transactions as $transaction) {
 
+        echo "Type : " . $transaction['type'] . "\n";
+        echo "Numéro : " . $transaction['numero'] . "\n";
+        echo "Montant : " . $transaction['montant'] . "\n";
 
+        if ($transaction['type'] === "RETRAIT") {
+            echo "Frais : " . $transaction['frais'] . "\n";
+        }
+        echo "----------------\n";
+    }
 }
-;
 ?>

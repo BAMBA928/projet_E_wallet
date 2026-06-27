@@ -41,5 +41,15 @@ function chercherWalletParNumero($Numero)
     return null;
 }
 
+function recupererTransactions()
+{
+    global $transactions;
+$vide = true;
+
+foreach ($transactions as $transaction) {
+    $vide = false;
+}
+    return $transactions;
+}
 
 ?>
