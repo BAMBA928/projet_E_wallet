@@ -37,7 +37,7 @@ function controllerDepot()
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = readline("veuillez saisir le montant : ");
+        $montant = (int)readline("veuillez saisir le montant : ");
     } while (!verfiefieMontant($montant));
 
     creerDepot($montant, $Numero);
@@ -54,7 +54,7 @@ function controllerRetrait()
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = readline("veuillez saisir le montant");
+        $montant = (int)readline("veuillez saisir le montant");
     } while (!verfiefieMontant($montant));
 
 

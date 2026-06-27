@@ -26,7 +26,7 @@ function creerDepot($montant, $Numero)
 
     enregistrezTransaction($transactions, $transaction);
 }
-function creerRetrait($montant, $Numero) 
+function creerRetrait($montant, $Numero)
 {
     global $transactions;
 
@@ -37,12 +37,16 @@ function creerRetrait($montant, $Numero)
         return;
     }
 
-    if ($montant > $wallet['solde']) {
+    $frais =calculFrais($montant);
+
+    $totalRetrait=$montant + $frais;
+
+    if ($totalRetrait > $wallet['solde']) {
         echo "Solde insuffisant\n";
         return;
     }
 
-    modifierSolde($Numero, -$montant);
+    modifierSolde($Numero, -$totalRetrait);
 
 
     $transaction = [
@@ -52,5 +56,22 @@ function creerRetrait($montant, $Numero)
     ];
 
     enregistrezTransaction($transactions, $transaction);
+}
+function calculFrais($montant)
+{
+    if ($montant <= 10000) {
+        return 200;
+    } else if ($montant <= 100000) {
+        return 500;
+    } else {
+        $frais = $montant  / 100;
+        if ($frais > 5000) {
+            return 5000;
+        }
+
+        return $frais;
+    }
+
+
 }
 ?>
