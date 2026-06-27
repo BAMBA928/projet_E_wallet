@@ -9,10 +9,22 @@ function creerWallet($Numero, $Nom, $CodeSecret, $Solde)
 }
 function creerDepot($montant, $Numero) 
 {
-  
     global $transactions;
-    $transaction = ['montant' => $montant, 'numero' => $Numero];
-    enregistrezTransaction($transactions, $transaction);
+
+
+    $wallet = chercherWalletParNumero($Numero);
+
+    if ($wallet === null) {
+        echo "Wallet introuvable\n";
+        return;
+    }
+
     
+    modifierSolde($Numero, $montant);
+
+    
+    $transaction = ['type' => 'DEPOT','montant' => $montant,'numero' => $Numero,];
+
+    enregistrezTransaction($transactions, $transaction);
 }
 ?>

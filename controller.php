@@ -31,19 +31,19 @@ function controllerCreerWallet()
 function controllerDepot()
 {
     global $wallets;
+
     do {
         $Numero = readline("Veuillez saisir un telephone :");
-
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = readline("veuillez saisir le montant");
+        $montant = readline("veuillez saisir le montant : ");
     } while (!verfiefieMontant($montant));
-    creerDepot($montant, $Numero) ;
 
-    echo "Depot effectué";
-}
-;
+    creerDepot($montant, $Numero);
+    var_dump($wallets);
+    echo "Depot effectué\n";
+};
 function controllerRetrait()
 {
     global $wallets;
