@@ -42,8 +42,6 @@ do {
             case '0':
            echo "Quitter\n";
             break;
-
-
         default:
             echo "choix invalide veiiler ressayer\n";
             break;
