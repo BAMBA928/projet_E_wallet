@@ -3,8 +3,8 @@
 
 require_once 'src/Repository/WalletRepository.php';
 require_once 'src/Validator/Validator.php';
-require_once 'src/services/WalletService.php';
-require_once 'src/controler/WalletController.php';
+require_once 'src/Services/WalletService.php';
+require_once 'src/Controller/WalletController.php';
 
 use function App\Controller\controllerCreerWallet;
 use function App\Controller\controllerDepot;

@@ -52,7 +52,7 @@ function creerRetrait($montant, $Numero)
 
     if ($totalRetrait > $wallet['solde']) {
         echo "Solde insuffisant\n";
-        return;
+        return false;
     }
 
     modifierSolde($Numero, -$totalRetrait);
@@ -66,6 +66,7 @@ function creerRetrait($montant, $Numero)
     ];
 
     enregistrezTransaction($transactions, $transaction);
+    return true;
 }
 function calculFrais($montant)
 {

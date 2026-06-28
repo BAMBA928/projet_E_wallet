@@ -70,8 +70,10 @@ function controllerRetrait()
     } while (!verfiefieMontant($montant));
 
 
-    creerRetrait($montant, $Numero);
-    echo "Retrait effectué";
+   $resultat =  creerRetrait($montant, $Numero);
+  if ($resultat) {
+    echo "Retrait effectué\n";
+}
 }
 ;
 function controllerListerTransactions()
