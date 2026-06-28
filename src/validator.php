@@ -33,17 +33,12 @@ function verfiefieMontant($montant): bool
 }
 ;
 
-
 function existeTel(string $Numero, array $wallets): bool
 {
+
 $numeros = array_column($wallets, 'Numeros');
-$position = array_search($Numero, $numeros);
+return in_array($Numero, $numeros);
 
-        if ($position !== false){
-            return true;
-        } 
-
-    return false;
 }
 ;
 

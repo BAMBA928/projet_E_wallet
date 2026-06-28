@@ -63,12 +63,13 @@ function controllerRetrait()
 ;
 function controllerListerTransactions()
 {
-    global $vide;
     $transactions = listerTransactions();
 
-    if ($vide) {
+    if (empty($transactions)) {
+
         echo "Aucune transaction\n";
         return;
+
     }
     foreach ($transactions as $transaction) {
 

@@ -34,25 +34,19 @@ function chercherWalletParNumero($Numero)
 {
     global $wallets;
 
-    $numeros = array_column($wallets, 'Numeros');
+    $resultat = array_filter($wallets, function($wallet) use ($Numero){
 
-    $index = array_search($Numero, $numeros);
+        return $wallet['Numeros'] === $Numero;
 
-    if ($index !== false) {
-        return $wallets[$index];
-    }
+    });
 
-    return null;
+    return reset($resultat);
 }
 
 function recupererTransactions()
 {
     global $transactions;
-    $vide = true;
 
-    foreach ($transactions as $transaction) {
-        $vide = false;
-    }
     return $transactions;
 }
 
