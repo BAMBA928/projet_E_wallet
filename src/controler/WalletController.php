@@ -1,4 +1,17 @@
 <?php
+
+namespace App\Controller;
+
+use function App\Services\creerWallet;
+use function App\Services\creerDepot;
+use function App\Services\creerRetrait;
+use function App\Services\listerTransactions;
+use function App\Validator\verfiefieTel;
+use function App\Validator\verfiefieNom;
+use function App\Validator\verfiefieCode;
+use function App\Validator\verfiefieSolde;
+use function App\Validator\verfiefieMontant;
+use function App\Validator\existeTel;
 function controllerCreerWallet()
 {
     global $wallets;
@@ -66,11 +79,10 @@ function controllerListerTransactions()
     $transactions = listerTransactions();
 
     if (empty($transactions)) {
-
         echo "Aucune transaction\n";
         return;
-
     }
+
     foreach ($transactions as $transaction) {
 
         echo "Type : " . $transaction['type'] . "\n";
@@ -80,6 +92,7 @@ function controllerListerTransactions()
         if ($transaction['type'] === "RETRAIT") {
             echo "Frais : " . $transaction['frais'] . "\n";
         }
+
         echo "----------------\n";
     }
 }

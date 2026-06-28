@@ -1,4 +1,8 @@
 <?php
+
+namespace App\Validator;
+
+
 function verfiefieTel($Numero): bool
 {
     return strlen($Numero) === 9;
@@ -33,12 +37,18 @@ function verfiefieMontant($montant): bool
 }
 ;
 
+
 function existeTel(string $Numero, array $wallets): bool
 {
+    foreach ($wallets as $value) {
 
-$numeros = array_column($wallets, 'Numeros');
-return in_array($Numero, $numeros);
+        if ($value['Numeros'] === $Numero) {
 
+            return true;
+        }
+        ;
+    }
+    return false;
 }
 ;
 

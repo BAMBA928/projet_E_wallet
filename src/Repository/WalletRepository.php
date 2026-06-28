@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Repository;
+
 $wallets = [];
 $transactions = [];
 function enregistrezWallet(&$wallets, $wallet)

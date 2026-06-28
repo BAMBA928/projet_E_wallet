@@ -1,4 +1,13 @@
 <?php
+
+
+namespace App\Services;
+
+use function App\Repository\enregistrezWallet;
+use function App\Repository\enregistrezTransaction;
+use function App\Repository\modifierSolde;
+use function App\Repository\chercherWalletParNumero;
+use function App\Repository\recupererTransactions;
 function creerWallet($Numero, $Nom, $CodeSecret, $Solde)
 {
     global $wallets;
