@@ -7,11 +7,11 @@ function controllerCreerWallet()
 
 
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == true);
-  
+
     ;
     do {
 
-    $Nom = readline("Veuillez saisir  Nom  :");
+        $Nom = readline("Veuillez saisir  Nom  :");
 
     } while (verfiefieNom($Nom) == false);
     do {
@@ -22,7 +22,7 @@ function controllerCreerWallet()
     } while (!verfiefieSolde($Solde));
 
     creerWallet($Numero, $Nom, $CodeSecret, $Solde);
-   
+
 
     echo "creation effectué\n";
 }
@@ -31,17 +31,17 @@ function controllerCreerWallet()
 function controllerDepot()
 {
     global $wallets;
+
     do {
         $Numero = readline("Veuillez saisir un telephone :");
-
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = readline("veuillez saisir le montant");
+        $montant = (int) readline("veuillez saisir le montant : ");
     } while (!verfiefieMontant($montant));
-    creerDepot($montant, $Numero) ;
 
-    echo "Depot effectué";
+    creerDepot($montant, $Numero);
+    echo "Depot effectué\n";
 }
 ;
 function controllerRetrait()
@@ -53,20 +53,33 @@ function controllerRetrait()
     } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
 
     do {
-        $montant = readline("veuillez saisir le montant");
+        $montant = (int) readline("veuillez saisir le montant");
     } while (!verfiefieMontant($montant));
+
+
+    creerRetrait($montant, $Numero);
     echo "Retrait effectué";
 }
 ;
 function controllerListerTransactions()
 {
-    global $wallets;
-    do {
-        $Numero = readline("Veuillez saisir un telephone :");
+    global $vide;
+    $transactions = listerTransactions();
 
-    } while (!verfiefieTel($Numero) || existeTel($Numero, $wallets) == false);
+    if ($vide) {
+        echo "Aucune transaction\n";
+        return;
+    }
+    foreach ($transactions as $transaction) {
 
+        echo "Type : " . $transaction['type'] . "\n";
+        echo "Numéro : " . $transaction['numero'] . "\n";
+        echo "Montant : " . $transaction['montant'] . "\n";
 
+        if ($transaction['type'] === "RETRAIT") {
+            echo "Frais : " . $transaction['frais'] . "\n";
+        }
+        echo "----------------\n";
+    }
 }
-;
 ?>
