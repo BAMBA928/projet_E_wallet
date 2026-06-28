@@ -36,14 +36,13 @@ function verfiefieMontant($montant): bool
 
 function existeTel(string $Numero, array $wallets): bool
 {
-    foreach ($wallets as $value) {
+$numeros = array_column($wallets, 'Numeros');
+$position = array_search($Numero, $numeros);
 
-        if ($value['Numeros'] === $Numero) {
-
+        if ($position !== false){
             return true;
-        }
-        ;
-    }
+        } 
+
     return false;
 }
 ;
