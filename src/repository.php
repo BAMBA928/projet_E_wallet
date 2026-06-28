@@ -1,22 +1,55 @@
 <?php
 $wallets = [];
 $transactions = [];
-function enregistrezWallet(&$wallets,$wallet){
-$wallets[] = $wallet;
+function enregistrezWallet(&$wallets, $wallet)
+{
+    $wallets[] = $wallet;
 
-};
-function enregistrezTransaction(&$transactions,$transaction){
-$transactions[] = $transaction;
+}
+;
+function enregistrezTransaction(&$transactions, $transaction)
+{
+    $transactions[] = $transaction;
 
-};
-function chercherWalletParNumero($numeros){
+}
+;
+function modifierSolde($numero, $montant)
+{
+    global $wallets;
 
+    foreach ($wallets as &$wallet) {
 
-};
+        if ($wallet['Numeros'] === $numero) {
 
-function modifierSolde($montant){
+            $wallet['solde'] += $montant;
 
+            return true;
+        }
+    }
 
-};
+    return false;
+}
+
+function chercherWalletParNumero($Numero)
+{
+    global $wallets;
+    foreach ($wallets as $wallet) {
+        if ($wallet['Numeros'] === $Numero) {
+            return $wallet;
+        }
+    }
+    return null;
+}
+
+function recupererTransactions()
+{
+    global $transactions;
+$vide = true;
+
+foreach ($transactions as $transaction) {
+    $vide = false;
+}
+    return $transactions;
+}
 
 ?>
